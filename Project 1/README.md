@@ -75,7 +75,7 @@ We found that the top stations were in central Midtown Manhattan, and were all m
 
 Once we had an idea of our top performers, we decided to zoom in and look at traffic at each of the top 4 stations.  They had very similar distributions:
 
-![](/images/station_traffic_penn_st.png)
+![](emilyageller.github.io/images/station_traffic_penn_st.png)
 
 ![](/images/station_traffic_23rd_st.png)
 
