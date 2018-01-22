@@ -75,13 +75,13 @@ We found that the top stations were in central Midtown Manhattan, and were all m
 
 Once we had an idea of our top performers, we decided to zoom in and look at traffic at each of the top 4 stations.  They had very similar distributions:
 
-![](emilyageller.github.io/images/station_traffic_penn_st.png)
+![](../../emilyageller.github.io/images/station_traffic_penn_st.png)
 
-![](/images/station_traffic_23rd_st.png)
+![](../../emilyageller.github.io/images/station_traffic_23rd_st.png)
 
-![](/images/station_traffic_34_herald.png)
+![](../../emilyageller.github.io/images/station_traffic_34_herald.png)
 
-![](/images/station_traffic_times_42.png)
+![](../../emilyageller.github.io/images/station_traffic_times_42.png)
 
 Each of the top stations has a conspicuous spike in March and, upon further investigation, we saw that this was consistent across all of the stations in the subway system.  This either points to an actual spike in traffic, or (more likely) some further data cleaning that we should do.
 
@@ -99,22 +99,22 @@ Some notable observations from these graphs are:
 We built demographic heatmaps using the two census datasets (and matplotlib) to show our top performing stations and characteristics of their surrounding populations.
 
 ##### Median Household Income:
-![](/images/median_household_income.png)
+![](../../emilyageller.github.io/images/median_household_income.png)
 
 On this map, we can see that 34 Penn St and 23 St stations (which happen to be our top 2 in terms of traffic), also have the highest median household income.  This is interesting, since we would like to send the street teams to areas with disposable income for increased chances of donations.
 
 ##### Female Population:
-![](/images/female_population.png)
+![](../../emilyageller.github.io/images/female_population.png)
 
 Of the top ten stations, 23rd St and 34 Herald Sq are surrounded by the highest female percentage of population.  We're interested in female participation in the gala, so sending stream teams to areas with a high concentration of women could be a good strategy.
 
 ##### Percentage of Population Commuting via Public Transportation:
-![](/images/transit.png)
+![](../../emilyageller.github.io/images/transit.png)
 
 The top stations that also had the highest percentage of commutors on public transport were 23 St and Times Sq - 42nd St. 
 
 ##### Tech Hubs:
-![](/images/tech_hubs.png)
+![](../../emilyageller.github.io/images/tech_hubs.png)
 
 A few of the top stations were near tech hubs. Focusing on the top five, 34 Herald Sq and Grand Central-42 St really stand out.  These would be good stations to target, since they have high foot traffic that may be interested in tech.
 
