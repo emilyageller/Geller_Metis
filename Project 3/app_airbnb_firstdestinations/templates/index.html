@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Airbnb First Destinations</title>
+  <style>
+  body{
+    font-family: sans-serif;
+    font-size: 12px;
+  }
+  .button {
+    background-color: LightPink;
+    border: none;
+    color: Black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .animal-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 10px 10px 0px #eee;
+    width: 300px;
+    margin: auto;
+  }
+  </style>
+
+</head>
+
+<body align="center">
+
+  <h3>User Features</h3>
+
+  <form action="/predict/" method="post">
+
+        <p>Gender</p>
+        <input type="radio" name="gender" value="male"   {% if form_values['gender'] == 'male' %}checked{% endif %}> Male
+        <input type="radio" name="gender" value="female" {% if form_values['gender'] == 'female' %}checked{% endif %}> Female
+        <input type="radio" name="gender" value="other" {% if form_values['gender'] == 'other' %}checked{% endif %}> Other  
+        <input type="radio" name="gender" value="unknown"  {% if form_values['gender'] == 'unknown' %}checked{% endif %}> Unknown  
+
+        <p>Sign up method</p>
+        <input type="radio" name="signup_method" value="facebook"  {% if form_values['signup_method'] == 'facebook' %}checked{% endif %}> Facebook
+        <input type="radio" name="signup_method" value="google"  {% if form_values['signup_method'] == 'google' %}checked{% endif %}> Google
+        <input type="radio" name="signup_method" value="direct"  {% if form_values['signup_method'] == 'direct' %}checked{% endif %}> Direct   
+
+        <p>Sign up platform</p>
+        <input type="radio" name="signup_app" value="moweb"  {% if form_values['signup_app'] == 'moweb' %}checked{% endif %}> Mobile Web
+        <input type="radio" name="signup_app" value="web" {% if form_values['signup_app'] == 'web' %}checked{% endif %}> Web
+        <input type="radio" name="signup_app" value="ios" {% if form_values['signup_app'] == 'ios' %}checked{% endif %}> iOS   
+        <input type="radio" name="signup_app" value="android" {% if form_values['signup_app'] == 'android' %}checked{% endif %}> Android   
+
+        <p>English as first language?</p>
+        <input type="radio" name="langues_en" value="true"  {% if form_values['langues_en'] == 'true' %}checked{% endif %}> True   
+        <input type="radio" name="langues_en" value="false" {% if form_values['langues_en'] == 'false' %}checked{% endif %}> False 
+
+        <p>How many days were they active (using the site) before they made an account?</p>
+        <input type="number" name="diff_account_to_first_active" min="0" max="1200" value="{{form_values['diff_account_to_first_active']}}" required>
+
+        <p>How many days has it been since they made an account?</p>
+        <input type="number" name="diff_account_to_first_booking" min="0" max="365" value="{{form_values['diff_account_to_first_booking']}}" required>
+
+        <p>Age</p>
+        <input type="number" name="age" min="18" max="120" value="{{form_values['age']}}">
+
+        <p>Sessions on Mac</p>
+        <input type="number" name="total_sessions_on_mac" min="0" max="2500" value="{{form_values['total_sessions_on_mac']}}" required>
+
+        <p>Sessions on Windows</p>
+        <input type="number" name="total_sessions_on_windows" min="0" max="2500" value="{{form_values['total_sessions_on_windows']}}" required>
+        
+        <p>Sessions on iPhone</p>
+        <input type="number" name="total_sessions_on_iphone" min="0" max="2500" value="{{form_values['total_sessions_on_iphone']}}" required>
+        
+        <p>Sessions on Android</p>
+        <input type="number" name="total_sessions_on_android" min="0" max="2500" value="{{form_values['total_sessions_on_android']}}" required>
+
+  <br>
+  <br>
+  <button class="button">
+    Domestic or International?
+  </button>
+  </form>
+
+  <br>
+
+  {% if result %}
+    <p>Predicted travel type: {{message}}</p>
+  
+    <p> Percentage chance domestic: </p>
+    <div id="domestic_chart"> </div>
+  
+    <p> Percentage chance international: </p>
+    <div id="international_chart"> </div>
+    <!-- Import the libraries: jQuery, d3, d3.slider -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="static/d3.slider.js"></script>
+
+    <script>
+
+     <!-- SINGLE BAR CHART -->
+
+      function renderBar(barName, chance) {
+          var chart = d3.select(barName)
+                   .append("svg:svg")
+                   .attr("width", 800)
+                   .attr("height", 100);
+
+         var chance_scale = d3.scale.linear()
+                                    .domain([0, 100])
+                                    .range([0, 800]);
+
+         var bar = chart.append("g")
+                        .attr("class", "bar")
+
+           bar.append("svg:rect")
+              .attr("id", "chancebar")
+              .attr("class", "bar")
+              .attr("width", chance_scale(chance))
+              .attr("height", 50);
+
+         bar.append("text")
+            .attr("id", "percent_text")
+            .attr("dy", ".75em")
+            .attr("y", 15)
+            .attr("x", chance_scale(chance-5))
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-size", 20)
+            .text( chance.toFixed(1) + "%");
+      }
+
+     var domestic_chance = {{domestic_chance}};
+     var international_chance = {{international_chance}};
+
+     renderBar("#domestic_chart", domestic_chance);
+     renderBar("#international_chart", international_chance);
+
+    </script>
+
+    {% endif %}
+</body>
+</html>
