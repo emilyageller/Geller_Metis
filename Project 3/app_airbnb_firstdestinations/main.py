@@ -7,16 +7,16 @@ app = Flask(__name__)
 def entry_page():
 
     default_values = {
-    'gender' : 'unknown',
+    'gender' : 'male',
     'signup_method' : 'facebook',
     'signup_app' : 'moweb',
     'langues_en' : 'true',
-    'diff_account_to_first_active' : '30',
-    'diff_account_to_first_booking' : '30',
-    'age' : '25',
-    'total_sessions_on_mac' : '10',
+    'diff_account_to_first_active' : '0',
+    'diff_account_to_first_booking' : '10',
+    'age' : '20',
+    'total_sessions_on_mac' : '20',
     'total_sessions_on_windows' : '0',
-    'total_sessions_on_iphone' : '5',
+    'total_sessions_on_iphone' : '30',
     'total_sessions_on_android' : '0' 
     }
 

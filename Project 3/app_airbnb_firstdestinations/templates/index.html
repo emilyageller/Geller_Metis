@@ -8,7 +8,7 @@
     font-size: 12px;
   }
   .button {
-    background-color: LightPink;
+    background-color: LightSteelBlue;
     border: none;
     color: Black;
     padding: 15px 32px;
@@ -26,11 +26,77 @@
     width: 300px;
     margin: auto;
   }
+  .bar {
+       fill: LightSeaGreen;
+     }
   </style>
 
 </head>
 
 <body align="center">
+
+  <h3>Airbnb First Destinations</h3>
+
+
+
+  {% if result %}
+    <p>Predicted travel type: {{message}}</p>
+  
+    <p> Percentage chance domestic: </p>
+    <div id="domestic_chart"> </div>
+  
+    <p> Percentage chance international: </p>
+    <div id="international_chart"> </div>
+    <!-- Import the libraries: jQuery, d3, d3.slider -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="static/d3.slider.js"></script>
+
+    <script>
+
+     <!-- SINGLE BAR CHART -->
+
+      function renderBar(barName, chance) {
+          var chart = d3.select(barName)
+                   .append("svg:svg")
+                   .attr("width", 800)
+                   .attr("height", 50);
+
+         var chance_scale = d3.scale.linear()
+                                    .domain([0, 100])
+                                    .range([0, 800]);
+
+         var bar = chart.append("g")
+                        .attr("class", "bar")
+
+           bar.append("svg:rect")
+              .attr("id", "chancebar")
+              .attr("class", "bar")
+              .attr("width", chance_scale(chance))
+              .attr("height", 50);
+
+         bar.append("text")
+            .attr("id", "percent_text")
+            .attr("dy", ".75em")
+            .attr("y", 15)
+            .attr("x", chance_scale(chance-5))
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-size", 20)
+            .text( chance.toFixed(1) + "%");
+      }
+
+     var domestic_chance = {{domestic_chance}};
+     var international_chance = {{international_chance}};
+
+     renderBar("#domestic_chart", domestic_chance);
+     renderBar("#international_chart", international_chance);
+
+    </script>
+
+    {% endif %}
+
+
 
   <h3>User Features</h3>
 
@@ -87,61 +153,5 @@
 
   <br>
 
-  {% if result %}
-    <p>Predicted travel type: {{message}}</p>
-  
-    <p> Percentage chance domestic: </p>
-    <div id="domestic_chart"> </div>
-  
-    <p> Percentage chance international: </p>
-    <div id="international_chart"> </div>
-    <!-- Import the libraries: jQuery, d3, d3.slider -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="static/d3.slider.js"></script>
-
-    <script>
-
-     <!-- SINGLE BAR CHART -->
-
-      function renderBar(barName, chance) {
-          var chart = d3.select(barName)
-                   .append("svg:svg")
-                   .attr("width", 800)
-                   .attr("height", 100);
-
-         var chance_scale = d3.scale.linear()
-                                    .domain([0, 100])
-                                    .range([0, 800]);
-
-         var bar = chart.append("g")
-                        .attr("class", "bar")
-
-           bar.append("svg:rect")
-              .attr("id", "chancebar")
-              .attr("class", "bar")
-              .attr("width", chance_scale(chance))
-              .attr("height", 50);
-
-         bar.append("text")
-            .attr("id", "percent_text")
-            .attr("dy", ".75em")
-            .attr("y", 15)
-            .attr("x", chance_scale(chance-5))
-            .attr("text-anchor", "middle")
-            .attr("fill", "white")
-            .attr("font-size", 20)
-            .text( chance.toFixed(1) + "%");
-      }
-
-     var domestic_chance = {{domestic_chance}};
-     var international_chance = {{international_chance}};
-
-     renderBar("#domestic_chart", domestic_chance);
-     renderBar("#international_chart", international_chance);
-
-    </script>
-
-    {% endif %}
 </body>
 </html>
