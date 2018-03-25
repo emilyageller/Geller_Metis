@@ -38,11 +38,17 @@
   <h3>Seedling Identifier</h3>
 
 
+  {% if result %}
 
+  <img src="{{imagepath}}">
 
+  <p>Seedling species: {{message}}</p>
 
+  {% endif %}
 
   <h3>Upload an image of a seedling!</h3>
+
+
 
   <form action="/identify/" method="post"
   enctype = "multipart/form-data">
