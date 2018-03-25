@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seedling Identifier</title>
+  <style>
+  body{
+    font-family: sans-serif;
+    font-size: 12px;
+  }
+  .button {
+    background-color: LightSteelBlue;
+    border: none;
+    color: Black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .animal-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 10px 10px 0px #eee;
+    width: 300px;
+    margin: auto;
+  }
+  .bar {
+       fill: LightSeaGreen;
+     }
+  </style>
+
+</head>
+
+<body align="center">
+
+  <h3>Seedling Identifier</h3>
+
+
+
+
+
+
+  <h3>Upload an image of a seedling!</h3>
+
+  <form action="/identify/" method="post"
+  enctype = "multipart/form-data">
+
+
+        <input type="file" name = "file"> 
+
+
+  <br>
+  <br>
+  <button class="button">
+    Upload image
+  </button>
+  </form>
+
+  <br>
+
+</body>
+</html>
