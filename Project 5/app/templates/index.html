@@ -1,70 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>Seedling Identifier</title>
-  <style>
-  body{
-    font-family: sans-serif;
-    font-size: 12px;
-  }
-  .button {
-    background-color: LightSteelBlue;
-    border: none;
-    color: Black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-  .animal-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 10px 10px 0px #eee;
-    width: 300px;
-    margin: auto;
-  }
-  .bar {
-       fill: LightSeaGreen;
-     }
-  </style>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 
 </head>
 
-<body align="center">
+<body >
+  <div class="container">
+    <br>
+    <br>
+    <h1>Seedling Identifier</h1>
 
-  <h3>Seedling Identifier</h3>
+    <h4>Upload an image of a seedling!</h4>
 
+    <form action="/identify/" method="post" enctype = "multipart/form-data">
+      <br>
+      
+      <div class="custom-file">
+        <input type="file" name="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
 
-  {% if result %}
+      <br>
+      <br>
+      <div class="text-center">
+      <button type="submit" class="button btn btn-success">
+        Upload image
+      </button>
+      </div>
+    </form>
 
-  <img src="{{imagepath}}">
+    <br>
+    <br>
 
-  <p>Seedling species: {{message}}</p>
+    {% if result %}
+    <div class="text-center">
+      <h2> {{planttype}} </h2>
+      <img src="{{imagepath}}" class="rounded" >
+      <h3>Species: {{species}}</h3>
+    </div>
+    {% endif %}
 
-  {% endif %}
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <h3>Upload an image of a seedling!</h3>
+  <script type="text/javascript" charset="utf-8">
 
+  // when the value of custom file changes
+  $('#customFile').on('change', function() { 
+    // strip fake path off the file, if there is one
+    var fileName = $('#customFile').val().replace(/C:\\fakepath\\/, '')
 
+    // replace the contents of the label with the file name
+    $('.custom-file-label').text(fileName);
+  });
 
-  <form action="/identify/" method="post"
-  enctype = "multipart/form-data">
-
-
-        <input type="file" name = "file"> 
-
-
-  <br>
-  <br>
-  <button class="button">
-    Upload image
-  </button>
-  </form>
-
-  <br>
+</script>
 
 </body>
 </html>

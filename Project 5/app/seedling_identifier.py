@@ -9,8 +9,8 @@ from keras.models import load_model
 xception_bottleneck = load_model('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/xception_bottleneck.h5')
 logreg = pickle.load( open( "/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/logreg.p", "rb" ))
 
-CATEGORIES = ['Black-grass', 'Charlock', 'Cleavers', 'Common Chickweed', 'Common wheat', 'Fat Hen', 'Loose Silky-bent',
-              'Maize', 'Scentless Mayweed', 'Shepherds Purse', 'Small-flowered Cranesbill', 'Sugar beet']
+CATEGORIES = [['Black-grass','Weed'], ['Charlock','Weed'] , ['Cleavers','Weed'], ['Common Chickweed','Weed'], ['Common wheat','Crop'], ['Fat Hen','Weed'], ['Loose Silky-bent','Weed'],
+              ['Maize','Crop'], ['Scentless Mayweed','Weed'], ['Shepherds Purse','Weed'], ['Small-flowered Cranesbill','Weed'], ['Sugar beet','Crop']]
 
 def read_img(filepath, size):
     img = image.load_img(filepath, target_size=size)

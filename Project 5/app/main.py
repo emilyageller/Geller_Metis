@@ -18,13 +18,14 @@ def upload_file():
       filepath = appfilepath + imagepath
       f = request.files['file']
       f.save(filepath)
-      message = identify(filepath)
+      seedling = identify(filepath)
       return render_template(
         'index.html',
         result= True,
-        message=message,
+        species=seedling[0],
+        planttype=seedling[1],
         imagepath=imagepath)
-      
+
 
 if __name__ == '__main__':
     app.run(debug=False)
