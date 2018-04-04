@@ -3,7 +3,7 @@ from seedling_identifier import identify
 import datetime as dt
 
 app = Flask(__name__)
-appfilepath = '/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/app_nn'
+appfilepath = '../app_nn'
 
 @app.route('/')
 def entry_page():

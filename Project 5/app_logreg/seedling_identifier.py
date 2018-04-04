@@ -6,8 +6,8 @@ from keras.applications import xception
 from keras.preprocessing import image
 from keras.models import load_model
 
-xception_bottleneck = load_model('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/xception_bottleneck.h5')
-logreg = pickle.load( open( "/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/logreg.p", "rb" ))
+xception_bottleneck = load_model('../xception_bottleneck.h5')
+logreg = pickle.load( open( "../logreg.p", "rb" ))
 
 CATEGORIES = [['Black-grass','Weed'], ['Charlock','Weed'] , ['Cleavers','Weed'], ['Common Chickweed','Weed'], ['Common wheat','Crop'], ['Fat Hen','Weed'], ['Loose Silky-bent','Weed'],
               ['Maize','Crop'], ['Scentless Mayweed','Weed'], ['Shepherds Purse','Weed'], ['Small-flowered Cranesbill','Weed'], ['Sugar beet','Crop']]
@@ -27,4 +27,4 @@ def identify(filepath):
 
 
 if __name__ == '__main__':
-    print(identify('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/data/test/0a64e3e6c.png'))
+    print(identify('Run with main.py'))

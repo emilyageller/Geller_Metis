@@ -9,13 +9,13 @@ import json
 import cv2
 
 #load json containing model architecture
-with open('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/seedlings_model.txt') as jsonfile:
+with open('../seedlings_model.txt') as jsonfile:
     json_string = json.load(jsonfile)
 
 #build model architecture
 model = model_from_json(json_string)
 #load model weights from seedling training
-model.load_weights('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/xception_seedlings_weights.h5')
+model.load_weights('../xception_seedlings_weights.h5')
 
 ## detect and segment plants in the image 
 def create_mask_for_plant(image):
@@ -77,4 +77,4 @@ def identify(filepath):
 
 
 if __name__ == '__main__':
-    print(identify('/Users/emilygeller/ds/metis/metisgh/Geller_Metis/Project 5/data/test/0a64e3e6c.png'))
+    print(identify('Run with main.py'))
